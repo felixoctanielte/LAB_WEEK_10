@@ -3,7 +3,6 @@ package com.example.lab_week_10
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.lab_week_10.viewmodels.TotalViewModel
@@ -27,9 +26,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun prepareViewModel() {
-        // observe LiveData dari ViewModel
-        viewModel.total.observe(this) { total ->
-            updateText(total)
+        // Observe LiveData untuk Activity
+        viewModel.total.observe(this) {
+            updateText(it)
         }
 
         findViewById<Button>(R.id.button_increment).setOnClickListener {

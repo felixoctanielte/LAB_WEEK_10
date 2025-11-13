@@ -6,11 +6,17 @@ import androidx.lifecycle.ViewModel
 
 class TotalViewModel : ViewModel() {
 
-    // Gunakan LiveData supaya bisa di-observe dari Activity
-    private val _total = MutableLiveData(0)
-    val total: LiveData<Int> get() = _total
+    // LiveData untuk menyimpan nilai total
+    private val _total = MutableLiveData<Int>()
+    val total: LiveData<Int> = _total
 
+    init {
+        // Inisialisasi total dengan 0
+        _total.postValue(0)
+    }
+
+    // Fungsi untuk menambah nilai total
     fun incrementTotal() {
-        _total.value = (_total.value ?: 0) + 1
+        _total.postValue(_total.value?.plus(1))
     }
 }
