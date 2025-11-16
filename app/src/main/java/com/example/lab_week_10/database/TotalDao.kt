@@ -11,10 +11,6 @@ interface TotalDao {
     @Update
     fun update(total: Total)
 
-    @Delete
-    fun delete(total: Total)
-
-    @Query("SELECT * FROM total WHERE id = :id LIMIT 1")
+    @Query("SELECT * FROM total WHERE id = :id")
     fun getTotal(id: Long): Total?
-
 }
